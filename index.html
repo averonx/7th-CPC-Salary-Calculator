@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>7th CPC Salary Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background: #ffffff;
+      padding: 25px;
+      width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>7th CPC Salary Calculator</h1>
+    <label>Select your Pay Level</label>
+    <select id="payLevel">
+      <option value="AGP">AGP Faculty</option>
+      <option value="GP">GP Employees</option>
+    </select>
+    <label>Select Basic Pay</label>
+    <input type="number" id="basicPay" placeholder="Enter your Basic Pay" />
+    <label>Select the type of your City for HRA</label>
+    <select id="hraCity">
+      <option value="metro">Metro City</option>
+      <option value="non-metro">Non-Metro City</option>
+    </select>
+    <label>Select the type of your City for TA</label>
+    <select id="taCity">
+      <option value="metro">Metro City</option>
+      <option value="non-metro">Non-Metro City</option>
+    </select>
+    <label>Select DA Percentage</label>
+    <select id="daPercentage">
+      <option value="0.53">53% (Current July 2024)</option>
+      <option value="0.50">50% (Previous)</option>
+    </select>
+    <button onclick="calculateSalary()">Calculate</button>
+    <div class="result" id="result">Your calculated salary will appear here.</div>
+  </div>
+  <script>
+    function calculateSalary() {
+      let basicPay = parseFloat(document.getElementById("basicPay").value) || 0;
+      let daPercentage = parseFloat(document.getElementById("daPercentage").value);
+      let hraCity = document.getElementById("hraCity").value;
+      let taCity = document.getElementById("taCity").value;
+      
+      let daAmount = basicPay * daPercentage;
+      let hraAmount = hraCity === "metro" ? basicPay * 0.24 : basicPay * 0.16;
+      let taAmount = taCity === "metro" ? 3600 : 1800;
+      
+      let totalSalary = basicPay + daAmount + hraAmount + taAmount;
+      document.getElementById("result").innerHTML = `Your calculated salary is: ₹${totalSalary.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
+
