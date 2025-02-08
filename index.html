@@ -54,6 +54,11 @@
       font-size: 18px;
       color: #333;
     }
+    /* Optional: Style for the donation button container */
+    .donate-container {
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -83,6 +88,13 @@
     </select>
     <button onclick="calculateSalary()">Calculate</button>
     <div class="result" id="result">Your calculated salary will appear here.</div>
+
+    <!-- Buy Me a Coffee Donation Button -->
+    <div class="donate-container">
+      <a href="https://buymeacoffee.com/averonx348" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height: 60px; width: 217px;">
+      </a>
+    </div>
   </div>
   <script>
     function calculateSalary() {
