@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://averonx.github.io/7th-CPC-Salary-Calculator/sitemap.xml
